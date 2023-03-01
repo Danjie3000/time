@@ -36,7 +36,7 @@ app.get('/time/month', (req, res) => {
 
 let timestampId = 1;
 const timestamps = [
-    {id: '1', timestamp: new Date().toLocaleString}
+    {id: '1', timestamp: new Date().toUTCString()},
 ];
 
 app.get('/test', (req, res) => {
@@ -49,7 +49,7 @@ app.get('/api/timestamp', (req, res) => {
 });
 
 app.post('/api/timestamp', (req, res) => {
-    const timestamps = { id: ++timestampId, timestamps : new Date().toLocaleString()};
+    const timestamps = { id: ++timestampId, timestamps : new Date().toUTCString()};
     timestamp.push(timestamps);
     res.send(timestamps);
 });
