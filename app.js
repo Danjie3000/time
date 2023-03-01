@@ -39,7 +39,7 @@ const timestamps = [
     {id: '1', timestamp: new Date().toUTCString()},
 ];
 
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(__dirname + "/web/time/time.html");
 });
 
