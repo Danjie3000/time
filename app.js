@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/web/time'));
 
 console.log(app);
 
@@ -35,7 +35,7 @@ app.get('/time/month', (req, res) => {
 // Opgave til aflevering.
 
 let timestampId = 1;
-const timestamps = [
+const timestamp = [
     {id: '1', timestamp: new Date().toUTCString()},
 ];
 
