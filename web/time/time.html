@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web/time/time.css"/>
+    <title>Test</title>
+</head>
+<body>
+    <h1>Test</h1>
+
+    <button id = 'time-stamp-btn'>Make Timestamp</button>
+    <div>
+        <button id = 'clicked-btn'> req times clicked </button>
+        <p id = 'clicked-txt'></p>
+    </div>
+    <div id = 'stamp-container'></div>
+
+    <p>
+        Today date + time is: <span id = 'datetime-p'></span>
+    </p>
+
+</body>
+
+        <!-- <script src="/web/time/time.js"></script> -->
+<script>
+    const timeStampBtn = document.getElementById('time-stamp-btn');
+    const clickedBtn = document.getElementById('clicked-btn');
+    const clickedTxt = document.getElementById('clicked-txt');
+    const dateTime = document.getElementById('datetime-p')
+    
+    clickedBtn.addEventListener('click', async(e) => {
+        await fetch('/api/clicked', {
+            method: 'PUT'
+        });
+        displayClicked();
+    });
+    
+    displayClicked();
+    
+    async function displayClicked() {
+        const data = await fetch('/api/clicked');
+        const numberOfClicks = await data.json();
+        clickedTxt.innerText = numberOfClicks.data;
+    };
+    
+    timeStampBtn.addEventListener('click', async(e) => {
+        const data = await fetch('/api/timestamp', {
+            method: 'POST'
+        });
+    });
+    
+    const date = new Date();
+    document.getElementById('datetime-p').innerHTML = date;
+    
+    </script>
+
+</html>
