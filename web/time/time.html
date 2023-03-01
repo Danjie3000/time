@@ -21,6 +21,10 @@
         Today date + time is: <span id = 'datetime-p'></span>
     </p>
 
+    <p>
+        Days before easter: <span id = 'countdown-p'></span>
+    </p>
+
 </body>
 
         <!-- <script src="/web/time/time.js"></script> -->
@@ -29,10 +33,11 @@
     const clickedBtn = document.getElementById('clicked-btn');
     const clickedTxt = document.getElementById('clicked-txt');
     const dateTime = document.getElementById('datetime-p')
+    const countDownDate = new Date("April 2, 2023 00:00:00").getTime();
     
     clickedBtn.addEventListener('click', async(e) => {
         await fetch('/api/clicked', {
-            method: 'PUT'
+            method: 'PUT',
         });
         displayClicked();
     });
@@ -53,6 +58,22 @@
     
     const date = new Date();
     document.getElementById('datetime-p').innerHTML = date;
+
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("countdown-p").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown-p").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
     </script>
 
 </html>

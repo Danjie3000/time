@@ -60,7 +60,7 @@ app.get('/api/clicked', (req, res) => {
     res.send({data: clicked})
 });
 
-app.post('/api/clicked', (req, res) => {
+app.put('/api/clicked', (req, res) => {
     res.send({data: ++clicked})
 });
 // API
