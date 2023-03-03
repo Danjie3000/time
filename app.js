@@ -2,9 +2,23 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use(express.static(__dirname + '/web/time'));
+app.use(express.static('web'));
 
 console.log(app);
+
+/*
+const tanksUtil = require('./util/tanks.js');
+console.log(tanksUtil.getTanks());
+
+const { getTanks } = require('./util/tanks.js'); // Her får jeg en bestemt function ved hjælp af { }
+console.log(getTanks());
+*/
+
+// assignment Serve a page called museum guards
+
+app.get('/museum-guards', (req, res) => {
+    res.sendFile(__dirname + "/web/museum/museum-guards.html");
+});
 
 /* Time */
 app.get('/time/time', (req, res) => {
