@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('web'));
+app.use(express.static('web')); // Hvis der er JS, billeder, som skal op på html, skal denne benyttes. 
 
 console.log(app);
 
