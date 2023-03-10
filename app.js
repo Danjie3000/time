@@ -20,6 +20,21 @@ app.get('/museum-guards', (req, res) => {
     res.sendFile(__dirname + "/web/museum/museum-guards.html");
 });
 
+// Path variable & query parameter
+app.get('/api/guards', (req, res) => {
+    //console.log(req.query);
+    //res.send({});
+    if (req.query.passport === 'theskyisblue') { // server side redirect med password.
+        return res.redirect('/museum-guards'); // brug return så den ikke fortsætter med at køre koden hvis svaret er true.
+        } else {
+        res.send({message: 'Wrong passport'});
+    }
+});
+    
+
+
+
+
 /* Time */
 app.get('/time/time', (req, res) => {
     res.send({

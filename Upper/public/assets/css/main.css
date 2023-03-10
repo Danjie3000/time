@@ -1,0 +1,12 @@
+#logo {
+    max-width: 5em; /* em er så den er relativ og retter sig efter skærm */
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex: 1;
+}
