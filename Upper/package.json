@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Danjie3000/time#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.0",
+    "sentiment": "^5.0.2"
   }
 }

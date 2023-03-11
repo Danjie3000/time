@@ -7,6 +7,7 @@ console.log(path.resolve('public/pages/frontpage.html'));
 app.use(express.static('public')); // Dette er så den kan se billeder, javascript osv. 
 
 import jokes from './util/jokes.js';
+console.log(await jokes.getJokes());
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/pages/frontpage/frontpage.html'));
